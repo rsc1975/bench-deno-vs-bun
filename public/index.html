@@ -24,10 +24,11 @@
     </head>
     <body>
         <h2>Benchmark between deno and Bun</h2>
-        <span>Technical details: <a>bench-deno-bun</a></span>
+        <span>REST API Performance comparation between both platforms, using <a target="_blank" href="https://honojs.dev/">Hono</a> framework as the reference implementation in both cases</span>
+        <span>Furthrr technical details: <a target="_black" href="https://github.com/rsc1975/bench-deno-vs-bun">bench-deno-bun</a></span>
+        <span>All tests are launched during 5 seconds, 2 workers and 200 connections, the displayed results are the average data</span>
         <section>
-            <h3>Platform</h3>
-            
+            <h3>Platform</h3>            
             <ul id="platform">              
             </ul>
         </section>
@@ -75,10 +76,11 @@
             const showPlatform = async () => {
                 const res = await fetch(`./platform.json`);
                 const platform = await res.json();                
-                const hwInfo = `${platform.hardware.model} (${platform.hardware.cores} core/s) [RAM: ${platform.hardware.mem}]`;
+                const hwInfo = `${platform.hardware.model} (${platform.hardware.arch}, ${platform.hardware.cores} core/s, RAM: ${platform.hardware.mem})`;
 
                 $('#platform').append(
                     $(`<li><strong>Harware:</strong> ${hwInfo}</li>`),
+                    $(`<li><strong>OS:</strong> ${platform.hardware.os}</li>`),
                     $(`<li><strong>Deno:</strong> ${platform.deno}</li>`),
                     $(`<li><strong>Bun:</strong> ${platform.bun}</li>`));
                 

@@ -10,6 +10,6 @@
   "scripts": {
     "prestart": "bun install",
     "start": "sh clone_and_run.sh",
-    "show": "http-server ./public -p 8080"
+    "show": "http-server ./public -p 8080 -c-1"
   }
 }

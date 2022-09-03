@@ -1,0 +1,44 @@
+{
+  "labels": [
+    "Ping",
+    "Version",
+    "Echo",
+    "SHA512",
+    "MD5",
+    "Base64 encode",
+    "Base64 decode",
+    "Random names"
+  ],
+  "datasets": [
+    {
+      "label": "Bun",
+      "backgroundColor": "#ffaa33bb",
+      "borderColor": "#ffaa33",
+      "data": [
+        8.592578125,
+        11.73515625,
+        14.6546875,
+        11.67578125,
+        8.201953125,
+        6.6458984375,
+        8.061328125,
+        43.303125
+      ]
+    },
+    {
+      "label": "Deno",
+      "backgroundColor": "#33aaccbb",
+      "borderColor": "#33aacc",
+      "data": [
+        6.690234375,
+        10.27421875,
+        7.179296875,
+        7.321484375,
+        6.304296875,
+        9.00546875,
+        8.87109375,
+        80.49375000953674
+      ]
+    }
+  ]
+}

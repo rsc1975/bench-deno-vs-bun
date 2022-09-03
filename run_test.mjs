@@ -1,21 +1,22 @@
 
 import autocannon from 'autocannon';
 import fs from 'fs';
-import os from 'os';
 import path from 'path';
+import os from 'os';
 
 if (!process.env.PLATFORM) {
   console.error('A "PLATFORM" var env should be specified');
   process.exit(-1);
-}
+} 
 
-const getHardware = () => {
+const getHardware = () => {  
   const cpus = os.cpus();
   const cores = cpus.length;
   const model = cpus[0].model;
   const arch = os.arch();
   const mem = `${(os.totalmem() / (1024*1024*1024)).toFixed(1)} GB`;
-  return {mem, arch, model, cores};
+  const opsys = `${os.platform()} ${os.release()}`;
+  return {mem, arch, model, cores, os: opsys};
 }
 
 const savePlatformData = () => {

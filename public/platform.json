@@ -1,0 +1,11 @@
+{
+  "hardware": {
+    "mem": "15.5 GB",
+    "arch": "x64",
+    "model": "Intel(R) Core(TM) i7-9850H CPU @ 2.60GHz",
+    "cores": 12,
+    "os": "linux 5.15.57.1-microsoft-standard-WSL2"
+  },
+  "deno": "deno 1.25.1 (release, x86_64-unknown-linux-gnu)\nv8 10.6.194.5\ntypescript 4.7.4",
+  "bun": "0.1.11"
+}
