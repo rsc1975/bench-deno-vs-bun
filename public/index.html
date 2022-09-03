@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>Benchmark between deno and Bun</title>
+        <meta name="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+        <style type="text/css">
+            body {
+                margin: 1rem;
+            }
+            section > h3 {
+                margin-block-end: 0;                
+            }
+            .hint {
+                color: rgba(0, 0, 0, 0.4);
+                font-size: 0.7rem;  
+                font-style: italic;              
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Benchmark between deno and Bun</h2>
+        <span>Technical details: <a>bench-deno-bun</a></span>
+        <section>
+            <h3>Platform</h3>
+            
+            <ul id="platform">              
+            </ul>
+        </section>
+        <section>
+            <h3>Requests/second</h3>
+            <span class="hint">Higher is better</span>
+            <div>
+                <canvas id="requests"></canvas>
+            </div>
+        </section>
+        <section>
+            <h3>Latency (ms)</h3>
+            <span class="hint">Lower is better</span>
+            <div>
+                <canvas id="latency"></canvas>
+            </div>
+        </section>
+        <section>
+            <h3>Throughput (MB/sec)</h3>
+            <span class="hint">Higher is better</span>
+            <div>
+                <canvas id="throughput"></canvas>
+            </div>
+        </section>
+
+        <section>
+            <h3>Commands</h3>
+            <ul>
+                <li><strong>Ping</strong>: Return a simple text
+                    <ul><li>Example response: <code>PONG</code></li></ul>
+                </li>
+                <li><strong>Version</strong>: Return a simple json with app version
+                    <ul><li>Example response: <pre>{
+    "server": "H3lp3r API",
+    "version": "1.0.4",
+    "platform": {
+        "bun": "v0.1.11"
+    }
+}</pre></li></ul>
+                </li>
+            </ul>
+        </section>
+
+        <script type="module">
+            const showPlatform = async () => {
+                const res = await fetch(`./platform.json`);
+                const platform = await res.json();                
+                const hwInfo = `${platform.hardware.model} (${platform.hardware.cores} core/s) [RAM: ${platform.hardware.mem}]`;
+
+                $('#platform').append(
+                    $(`<li><strong>Harware:</strong> ${hwInfo}</li>`),
+                    $(`<li><strong>Deno:</strong> ${platform.deno}</li>`),
+                    $(`<li><strong>Bun:</strong> ${platform.bun}</li>`));
+                
+            }
+            const createChart = async (chartId) => {
+                const res = await fetch(`./${chartId}.json`);
+                const data = await res.json();                
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: {}
+                };
+                const myChart = new Chart(
+                    document.getElementById(chartId),
+                    config
+                );
+            }
+
+            $(async function() {
+                console.log( "ready!" );
+                showPlatform();
+                const charts = ['requests', 'latency', 'throughput'];
+                charts.forEach(createChart);
+            });
+        </script>
+    </body>
+</html>

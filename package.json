@@ -1,14 +1,15 @@
 {
-  "version": "1.0.4",
-  "name": "prueba",
+  "version": "0.0.1",
+  "name": "bench-deno-vs-bun",
   "devDependencies": {
-    "bun-types": "latest"
+    "http-server": "latest",
+    "autocannon": "latest"
   },
   "dependencies": {
-    "hono": "^2.0.0"
   },
   "scripts": {
-    "start": "bun run src/index.ts"
-  },
-  "module": "src/index.js"
+    "prestart": "bun install",
+    "start": "sh clone_and_run.sh",
+    "show": "http-server ./public -p 8080"
+  }
 }

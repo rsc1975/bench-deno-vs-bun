@@ -1,0 +1,61 @@
+{
+    "order": ["ping", "version", "echo", "hash_sha512", "hash_md5", "base64_encode", "base64_decode", "generate_names"],
+    "commands": {
+        "ping": {
+            "label": "Ping",
+            "urlPath": "/ping"
+        },        
+        "generate_names": {
+            "label": "Random names",
+            "urlPath": "/api/random/names?total=100&_pretty=1"
+        },
+        "base64_encode": {
+            "label": "Base64 encode",
+            "urlPath": "/api/base/64/encode?text=Lorem ipsum dolor sit amet&_pretty=1"
+        },
+        "base64_decode": {
+            "label": "Base64 decode",
+            "urlPath": "/api/base/64/decode?text=TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQ=&_pretty=1"
+        },
+        "hash_sha512": {
+            "label": "SHA512",
+            "urlPath": "/api/hash/sha512?text=Lorem ipsum dolor sit amet&_pretty=1"
+        },
+        "hash_md5": {
+            "label": "MD5",
+            "urlPath": "/api/hash/md5?text=Lorem ipsum dolor sit amet&_pretty=1"
+        },
+        "version": {
+            "label": "Version",
+            "urlPath": "/?_pretty=1"
+        },
+        "echo": {
+            "label": "Echo",
+            "method": "POST",
+            "urlPath": "/api/info/echo?_pretty=1",
+            "body": {
+                "foo": "Lorem impsup whatever",
+                "success": true,
+                "coefficient": 567.76,
+                "page": 23,
+                "list": [
+                    {
+                        "name": "Rob",
+                        "birdDate": "2000-02-03",
+                        "courses": 12
+                    },
+                    {
+                        "name": "John",
+                        "birdDate": "1990-10-13",
+                        "courses": 112
+                    },
+                    {
+                        "name": "Harry",
+                        "birdDate": "2002-12-05",
+                        "courses": 8
+                    }
+                ]
+            }
+        }
+    }
+}
