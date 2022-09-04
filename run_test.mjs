@@ -31,7 +31,7 @@ const savePlatformData = () => {
   }
   newData.hardware = hw;
   newData[process.env.PLATFORM.toLowerCase()] = process.env.VERSION;
-  
+  newData.timestamp = new Date().toISOString();
   fs.writeFileSync(filepath, JSON.stringify(newData, null, 2));
 }
 

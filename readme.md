@@ -1,5 +1,7 @@
 # Bechmark Bun vs Deno
 
+### Latest test results: https://deno-vs-bun.fly.dev/ 
+
 This repo tries to compare the performance of two modern Javascript runtimes like Deno and Bun as a platform for a REST API app.
 
 ## Requirements

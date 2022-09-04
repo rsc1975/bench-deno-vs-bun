@@ -1,5 +1,5 @@
 {
-    "order": ["ping", "version", "echo", "hash_sha512", "hash_md5", "base64_encode", "base64_decode", "generate_names"],
+    "order": ["ping", "version", "echo", "hash_sha512", "hash_md5", "base64_encode", "base64_decode", "generate_names", "random_email"],
     "commands": {
         "ping": {
             "label": "Ping",
@@ -9,21 +9,25 @@
             "label": "Random names",
             "urlPath": "/api/random/names?total=100&_pretty=1"
         },
+        "random_email": {
+            "label": "Random email",
+            "urlPath": "/api/random/email?_pretty=1"
+        },
         "base64_encode": {
             "label": "Base64 encode",
-            "urlPath": "/api/base/64/encode?text=Lorem ipsum dolor sit amet&_pretty=1"
+            "urlPath": "/api/base/64/encode?text=Lorem%20ipsum%20dolor%20sit%20amet&_pretty=1"
         },
         "base64_decode": {
             "label": "Base64 decode",
-            "urlPath": "/api/base/64/decode?text=TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQ=&_pretty=1"
+            "urlPath": "/api/base/64/decode?text=TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQ%3D&_pretty=1"
         },
         "hash_sha512": {
             "label": "SHA512",
-            "urlPath": "/api/hash/sha512?text=Lorem ipsum dolor sit amet&_pretty=1"
+            "urlPath": "/api/hash/sha512?text=Lorem%20ipsum%20dolor%20sit%20amet&_pretty=1"
         },
         "hash_md5": {
             "label": "MD5",
-            "urlPath": "/api/hash/md5?text=Lorem ipsum dolor sit amet&_pretty=1"
+            "urlPath": "/api/hash/md5?text=Lorem%20ipsum%20dolor%20sit%20amet&_pretty=1"
         },
         "version": {
             "label": "Version",

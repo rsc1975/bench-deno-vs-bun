@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Benchmark between deno and Bun</title>
+        <title>Benchmark between Deno and Bun</title>
         <meta name="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,7 +23,7 @@
         </style>
     </head>
     <body>
-        <h2>Benchmark between deno and Bun</h2>
+        <h2>Benchmark between Deno and Bun</h2>
         <span>REST API Performance comparation between both platforms, using <a target="_blank" href="https://honojs.dev/">Hono</a> framework as the reference implementation in both cases</span>
         <span>Furthrr technical details: <a target="_black" href="https://github.com/rsc1975/bench-deno-vs-bun">bench-deno-bun</a></span>
         <span>All tests are launched during 5 seconds, 2 workers and 200 connections, the displayed results are the average data</span>
@@ -31,6 +31,7 @@
             <h3>Platform</h3>            
             <ul id="platform">              
             </ul>
+        <span class="hint">Test timestamp: <span id="test-date"></span></span>
         </section>
         <section>
             <h3>Requests/second</h3>
@@ -52,6 +53,7 @@
             <div>
                 <canvas id="throughput"></canvas>
             </div>
+            <span class="hint"><strong>INFO:</strong> Deno server sends 2 extra headers: "vary: Accept-Encoding" and "date: Sun, 04 Sep 2022 07:53:29 GMT", so this chart could show different results that the 'requests per second' chart.</span>
         </section>
 
         <section>
@@ -69,6 +71,111 @@
     }
 }</pre></li></ul>
                 </li>
+                <li><strong>Echo</strong>: Return the same payload sent in the POST call
+                    <ul><li>Example response: <pre>{
+    "foo": "Lorem impsup whatever",
+    "success": true,
+    "coefficient": 567.76,
+    "page": 23,
+    "list": [
+        {
+            "name": "Rob",
+            "birdDate": "2000-02-03",
+            "courses": 12
+        },
+        {
+            "name": "John",
+            "birdDate": "1990-10-13",
+            "courses": 112
+        },
+        {
+            "name": "Harry",
+            "birdDate": "2002-12-05",
+            "courses": 8
+        }
+    ]
+    }
+}</pre></li></ul>
+                </li>
+                <li><strong>SHA512</strong>: Return json with a SHA512 hash
+                    <ul><li>Example response: <pre>{
+    "result": "b1f4aaa6b51c19ffbe4b1b6fa107be09c8acafd7c768106a3faf475b1e27a940d3c075fda671eadf46c68f93d7eabcf604bcbf7055da0dc4eae6743607a2fc3f",
+    "input": {
+        "action": "sha512",
+        "params": {
+            "text": "Lorem ipsum dolor sit amet"
+        }
+    }
+}</pre></li></ul>
+                </li>
+                <li><strong>MD5</strong>: Return json with a MD5 hash
+                    <ul><li>Example response: <pre>{
+    "result": "fea80f2db003d4ebc4536023814aa885",
+    "input": {
+        "action": "md5",
+        "params": {
+            "text": "Lorem ipsum dolor sit amet"
+        }
+    }
+}</pre></li></ul>
+                </li>
+            
+                <li><strong>Base64 encode</strong>: Return json with a test encoded in Base64
+                    <ul><li>Example response: <pre>{
+    "result": "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQ=",
+    "input": {
+        "action": "encode",
+        "params": {
+            "text": "Lorem ipsum dolor sit amet"
+        }
+    }
+}</pre></li></ul>
+                </li>
+                <li><strong>Base64 decode</strong>: Return json with a plain test decoded from Base64
+                    <ul><li>Example response: <pre>{
+    "result": "Lorem ipsum dolor sit amet",
+    "input": {
+        "action": "decode",
+        "params": {
+            "text": "Lorem ipsum dolor sit amet"
+        }
+    }
+}</pre></li></ul>
+                </li>
+                <li><strong>Random names</strong>: Return json with 100 generated person names
+                    <ul><li>Example response: <pre>{
+    "result": [
+      {
+        "gender": "male",
+        "firstName": "Hong",
+        "lastName": "Óskarsdóttir"
+      },
+      { ... }
+      {
+        "gender": "female",
+        "firstName": "Rut",
+        "lastName": "Sigurjónsdóttir"
+      }
+    ],
+    "input": {
+      "action": "names",
+      "params": {
+        "total": "100",
+        "gender": null
+      }
+    }
+}</pre></li></ul>
+                </li>
+                <li><strong>Ramdon email</strong>: Return json with a generated random email
+                    <ul><li>Example response: <pre>{
+    "result": "toshioshapiro@example.net",
+    "input": {
+        "action": "email",
+        "params": {}
+    }
+}</pre></li></ul>
+                </li>
+            
             </ul>
         </section>
 
@@ -83,6 +190,7 @@
                     $(`<li><strong>OS:</strong> ${platform.hardware.os}</li>`),
                     $(`<li><strong>Deno:</strong> ${platform.deno}</li>`),
                     $(`<li><strong>Bun:</strong> ${platform.bun}</li>`));
+                $('#test-date').text(platform.timestamp);
                 
             }
             const createChart = async (chartId) => {
