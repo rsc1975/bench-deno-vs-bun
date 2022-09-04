@@ -71,7 +71,7 @@ async function testCommand (urlBase, command) {
       title: command.label,
       url: `${urlBase}${command.urlPath}`,
       method: command.method || 'GET',
-      body: JSON.stringify(command.body),
+      body: command.body && JSON.stringify(command.body),
       connections: 200, //default
       workers: 2,
       duration: 5 // default
