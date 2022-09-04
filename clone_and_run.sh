@@ -10,7 +10,11 @@ killall deno bun
 
 echo Cloning git repos...
 git clone -b bun --single-branch https://github.com/rsc1975/h3lp3r-api.git h3lp3r-bun
+cd h3lp3r-bun && bun install
+cd ..
 git clone -b deno --single-branch https://github.com/rsc1975/h3lp3r-api.git h3lp3r-deno
+deno check h3lp3r-deno/src/index.ts
+
 
 echo Deno test load init
 QUIET=true PORT=4004 deno run -A --unstable h3lp3r-deno/src/index.ts &
