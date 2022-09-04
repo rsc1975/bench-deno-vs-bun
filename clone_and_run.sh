@@ -13,9 +13,9 @@ git clone -b bun --single-branch https://github.com/rsc1975/h3lp3r-api.git h3lp3
 git clone -b deno --single-branch https://github.com/rsc1975/h3lp3r-api.git h3lp3r-deno
 
 echo Deno test load init
-QUIET=true PORT=4004 deno run -A h3lp3r-deno/src/index.ts &
+QUIET=true PORT=4004 deno run -A --unstable h3lp3r-deno/src/index.ts &
 
-URL_BASE="http://localhost:4004" PLATFORM="deno" VERSION="$(deno --version)" node run_test.mjs
+URL_BASE="http://localhost:4004" PLATFORM="deno" VERSION="unstable $(deno --version)" node run_test.mjs
 
 killall deno
 

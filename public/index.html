@@ -63,6 +63,15 @@
 
         <section>
             <h3>Commands</h3>
+            <span>All commands will include the following headers</span>
+            <ul>
+                <li><strong>content-type</strong>. I.e: <code>"content-type: application/json; charset=UTF-8"</code></li>
+                <li><strong>content-length</strong>. I.e: <code>"content-length: 235"</code></li>
+                <li><strong>access-control-allow-origin</strong>. I.e: <code>"access-control-allow-origin: *"</code></li>
+                <li><strong>date</strong>. I.e: <code>"date: Sun, 04 Sep 2022 15:00:23 GMT" <span class="hint">Bun version adds it manually, in Deno is automatic</span></code></li>
+                <li><strong>x-response-time</strong>. I.e: <code>"x-response-time: 10908 us" <span class="hint">Response time generation in microseconds</span></code></li>
+            </ul>
+            <h3>Commands list</h3>
             <ul>
                 <li><strong>Ping</strong>: Return a simple text
                     <ul><li>Example response: <code>PONG</code></li></ul>

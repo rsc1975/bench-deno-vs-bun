@@ -16,7 +16,7 @@ If you want to launch the test yourself, you'll need pre-installed in your machi
 
 We are going to use a third party app [h3lp3r-api](https://github.com/rsc1975/h3lp3r-api) as the subject in the load test, the repo has 2 branch `deno` and `bun` with an equivalent implementation for each platform, both implementations use [Hono framework](https://honojs.dev/).
 
-To launch the test we need a lib like [autocannon](https://www.npmjs.com/package/autocannon), this tool will generate the json data that our script will agregate and prepare to show it in a friendly chart.
+To launch the test we need a lib like [autocannon](https://www.npmjs.com/package/autocannon), this tool will generate the json data that our script will agregate and prepare to show it in a friendly chart. We consider other options like wrk, oha or bombardier, but autocannon seems to show similar numbers, there is no bottleneck and the js api is handy.
 
 ## Getting started
 
@@ -50,7 +50,7 @@ git clone -b bun --single-branch https://github.com/rsc1975/h3lp3r-api.git h3lp3
 git clone -b deno --single-branch https://github.com/rsc1975/h3lp3r-api.git h3lp3r-deno
 
 echo Deno test load init
-QUIET=true PORT=4004 deno run -A h3lp3r-deno/src/index.ts &
+QUIET=true PORT=4004 deno run -A --unstable h3lp3r-deno/src/index.ts &
 
 URL_BASE="http://localhost:4004" PLATFORM="deno" VERSION="$(deno --version)" node run_test.mjs
 
