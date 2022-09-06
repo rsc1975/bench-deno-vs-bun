@@ -72,7 +72,7 @@ const saveChartFiles = (allChartsData) => {
 async function testCommand(urlBase, command) {
   console.log(`Command: ${command.label}, wait for 5 secs...`);
   const body = command.body && JSON.stringify(command.body);
-  const bodyParam = body ? `-d '${body}'` : '';
+  const bodyParam = body ? `-d '${body}' -H "content-type: application/json"` : '';
   const method = command.method || 'GET';
   const url = `${urlBase}${command.urlPath}`;
   const ohaParams = `-j -z 5s -c 200 --no-tui -m ${method} ${bodyParam}`;
