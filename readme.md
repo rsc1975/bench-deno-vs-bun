@@ -14,9 +14,11 @@ If you want to launch the test yourself, you'll need pre-installed in your machi
 * [Bun  CLI](https://bun.sh/)
 * [Node runtime](https://nodejs.org/en/) (Just to launch the test and prepare resulting data, `autocannon` only supports `node`)
 
+See [requirements.md](./requirements.md) file for details about how to install everything.
+
 We are going to use a third party app [h3lp3r-api](https://github.com/rsc1975/h3lp3r-api) as the subject in the load test, the repo has 2 branch `deno` and `bun` with an equivalent implementation for each platform, both implementations use [Hono framework](https://honojs.dev/).
 
-To launch the test we need a lib like [autocannon](https://www.npmjs.com/package/autocannon), this tool will generate the json data that our script will agregate and prepare to show it in a friendly chart. We consider other options like wrk, oha or bombardier, but autocannon seems to show similar numbers, there is no bottleneck and the js api is handy.
+To launch the test we need a lib like [oha](https://github.com/hatoo/oha), this tool will generate the json data that our script will agregate and prepare to show it in a friendly chart. 
 
 ## Getting started
 
