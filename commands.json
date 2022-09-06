@@ -31,7 +31,7 @@
         },
         "version": {
             "label": "Version",
-            "urlPath": "/?_pretty=1"
+            "urlPath": "/"
         },
         "echo": {
             "label": "Echo",
