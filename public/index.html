@@ -24,6 +24,9 @@
                 font-size: 0.7rem;  
                 font-style: italic;              
             }
+            canvas {
+                max-width: 900px;
+            }
         </style>
     </head>
     <body>
@@ -227,6 +230,16 @@
                 const charts = ['requests', 'latency', 'throughput'];
                 charts.forEach(createChart);
             });
+        </script>
+
+        <script type="module">
+            import { h, Component, render } from 'https://unpkg.com/preact?module';
+        
+            // Create your app
+            const app = h('h1', null, 'Hello World!');
+        
+            render(app, document.body);
+            console.log('Hola???')
         </script>
     </body>
 </html>

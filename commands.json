@@ -1,5 +1,5 @@
 {
-    "order": ["ping", "version", "echo", "hash_sha512", "hash_md5", "base64_encode", "base64_decode"],
+    "order": ["ping", "version", "echo", "hash_sha512", "base64_encode", "base64_decode", "generate_names", "random_email"],
     "commands": {
         "ping": {
             "label": "Ping",
